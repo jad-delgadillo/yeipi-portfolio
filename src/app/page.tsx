@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CTAButton } from "@/components/cta-button";
 import { Hero } from "@/components/hero";
+import { LoadingExperience } from "@/components/loading-experience";
 import { Marquee } from "@/components/marquee";
 import { MobileDock } from "@/components/mobile-dock";
 import { Nav } from "@/components/nav";
@@ -16,36 +17,37 @@ import {
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <LoadingExperience />
       <Nav />
       <MobileDock />
       <Hero />
 
       <section className="story-block" id="story" aria-labelledby="story-title">
         <Reveal>
-          <p className="eyebrow">The pitch</p>
+          <p className="eyebrow">La premisa</p>
           <h2 id="story-title">
-            People do not need another clip. They need a scene they can step
-            into.
+            La gente no necesita otro clip. Necesita una escena en la que pueda
+            entrar.
           </h2>
         </Reveal>
         <Reveal delay={0.12}>
           <p className="story-copy">
-            We turn real people, places, launches, vows, and celebrations into
-            films and photographs with a point of view. The work feels composed
-            but alive, polished but never distant, built to make the audience
-            believe they were there.
+            Convertimos personas, lugares, lanzamientos, promesas y
+            celebraciones en videos y fotografías con un punto de vista. El
+            trabajo se siente cuidado pero vivo, pulido pero cercano, hecho para
+            que la audiencia sienta que estuvo ahí.
           </p>
         </Reveal>
       </section>
 
-      <section className="proof-section" aria-label="Story types">
+      <section className="proof-section" aria-label="Tipos de historia">
         <Marquee items={proofLines} />
       </section>
 
       <section className="work-section" id="work" aria-labelledby="work-title">
         <Reveal>
-          <p className="eyebrow light">See it in action</p>
-          <h2 id="work-title">Stories with a pulse.</h2>
+          <p className="eyebrow light">En acción</p>
+          <h2 id="work-title">Historias con pulso.</h2>
         </Reveal>
         <div className="project-grid">
           {projects.map((project, index) => (
@@ -73,8 +75,8 @@ export default function Home() {
 
       <section className="services-section" id="services" aria-labelledby="services-title">
         <Reveal className="services-intro">
-          <p className="eyebrow">What we make</p>
-          <h2 id="services-title">Cinema for the moments your brand cannot fake.</h2>
+          <p className="eyebrow">Lo que hacemos</p>
+          <h2 id="services-title">Cine para los momentos que tu marca no puede fingir.</h2>
         </Reveal>
         <div className="service-grid">
           {services.map((service) => (
@@ -98,12 +100,12 @@ export default function Home() {
           />
         </div>
         <Reveal className="vision-copy">
-          <p className="stamp">capturing human spirit</p>
-          <h2 id="vision-title">Let your vision direct the room.</h2>
+          <p className="stamp">capturando espíritu humano</p>
+          <h2 id="vision-title">Deja que tu visión dirija la escena.</h2>
           <p>
-            The camera is only the instrument. The real craft is knowing where
-            to look, when to wait, and how to shape honest moments into a
-            visual memory that moves.
+            La cámara es solo el instrumento. El verdadero oficio está en saber
+            dónde mirar, cuándo esperar y cómo transformar momentos honestos en
+            una memoria visual que se mueve.
           </p>
         </Reveal>
         <div className="tilted-frame small">
@@ -119,8 +121,8 @@ export default function Home() {
 
       <section className="process-section" aria-labelledby="process-title">
         <Reveal>
-          <p className="eyebrow">How it works</p>
-          <h2 id="process-title">A simple production arc.</h2>
+          <p className="eyebrow">Cómo funciona</p>
+          <h2 id="process-title">Un arco de producción simple.</h2>
         </Reveal>
         <div className="process-grid">
           {process.map((step) => (
@@ -135,13 +137,13 @@ export default function Home() {
 
       <section className="contact-section" id="contact" aria-labelledby="contact-title">
         <Reveal>
-          <p className="eyebrow light">Take the next step</p>
-          <h2 id="contact-title">Bring the story. We will bring the cinema.</h2>
+          <p className="eyebrow light">El siguiente plano</p>
+          <h2 id="contact-title">Trae la historia. Nosotros ponemos el cine.</h2>
           <p>
-            Based in {brand.location}. Available for commercial, event, wedding,
-            and editorial work.
+            Con base en {brand.location}. Disponible para proyectos
+            comerciales, eventos, bodas y trabajo editorial.
           </p>
-          <CTAButton href={`mailto:${brand.email}`}>Start the conversation</CTAButton>
+          <CTAButton href={`mailto:${brand.email}`}>Empecemos la conversación</CTAButton>
         </Reveal>
       </section>
     </main>

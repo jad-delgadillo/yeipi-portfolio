@@ -1,18 +1,40 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { BadgeCheck, MessageCircle } from "lucide-react";
 import { CTAButton } from "@/components/cta-button";
 import { brand, heroVideo } from "@/lib/site-content";
 
-
 export function Hero() {
+  const shellRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: shellRef,
+    offset: ["start start", "end start"],
+  });
+  const heroScale = useTransform(scrollYProgress, [0, 0.38, 0.72], [1, 0.965, 0.94]);
+  const heroRadius = useTransform(scrollYProgress, [0, 0.38, 0.72], ["0px", "18px", "28px"]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 641px)");
+    const update = () => setIsDesktop(media.matches);
+
+    update();
+    media.addEventListener("change", update);
+
+    return () => media.removeEventListener("change", update);
+  }, []);
+
   return (
-    <section className="hero-shell" id="top" aria-labelledby="hero-title">
-      {/* <h1 className="hero-title-mobile font-bold">El Yeipi</h1> */}
-      <div className="hero-section">
+    <section ref={shellRef} className="hero-shell" id="top" aria-labelledby="hero-title">
+      <motion.div
+        className="hero-section"
+        style={isDesktop ? { scale: heroScale, borderRadius: heroRadius } : undefined}
+      >
         <motion.div
           className="hero-media"
-          initial={{ opacity: 0, scale: 1.04 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -30,19 +52,50 @@ export function Hero() {
           <div className="hero-scrim" />
         </motion.div>
         <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, y: 24 }}
+          className="hero-content app-profile"
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="hero-kicker">{brand.location}</p>
-          <h1 id="hero-title">Haz que tu historia se sienta como una película.</h1>
-          <p>
-            Películas y fotografía para personas, marcas, lugares y momentos que merecen más que documentación.
-          </p>
-          <CTAButton href="#contact">Planeemos tu proyecto</CTAButton>
+          <div className="flex w-full justify-between font-bold opacity-80 text-sm" aria-hidden="true">
+            <span>El Yeipi</span>
+            <span>Portfolio</span>
+          </div>
+
+          <div className="rounded-3xl p-4 gap-2 bg-black/40 backdrop-blur-lg border border-white/10 flex flex-col">
+            {/* <h1>{brand.name} <BadgeCheck aria-hidden="true" size={19} strokeWidth={2.4} /></h1> */}
+            {/* <p className="hero-kicker">{brand.location}</p> */}
+            <h4 className="text-3xl!" id="hero-title">Historias reales con feeling de cine.</h4>
+            <p className="text-xs">
+              Cine, fotografía y dirección para marcas, bodas y momentos que
+              necesitan sentirse vivos.
+            </p>
+
+            {/* <div className="profile-stats">
+              <div>
+                <strong>48</strong>
+                <span>films</span>
+              </div>
+              <div>
+                <strong>12K</strong>
+                <span>views</span>
+              </div>
+              <div>
+                <strong>360</strong>
+                <span>stories</span>
+              </div>
+            </div> */}
+
+            <div className="profile-actions">
+              <CTAButton href="#work">Ver proyectos</CTAButton>
+              <a className="ghost-action" href="#contact">
+                <MessageCircle aria-hidden="true" size={18} strokeWidth={2.1} />
+                Hablemos
+              </a>
+            </div>
+          </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

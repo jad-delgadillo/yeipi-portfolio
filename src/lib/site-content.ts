@@ -9,25 +9,21 @@ import {
 } from "lucide-react";
 
 export const brand = {
-  name: "Yeipi",
+  name: "El Yeipi",
   email: "hello@lumanorth.studio",
-  location: "Guadalajara, MX / available worldwide",
+  location: "Guadalajara, MX / disponible en todo el mundo",
 };
 
 export const navItems = [
-  { label: "The Work", href: "#work" },
-  { label: "The Story", href: "#story" },
-  { label: "Start a Film", href: "#contact" },
+  { label: "Proyectos", href: "#work" },
+  { label: "La historia", href: "#story" },
+  { label: "Hablemos", href: "#contact" },
 ];
 
 export const heroVideo = {
-  // This needs a direct delivery URL, for example:
-  // https://res.cloudinary.com/dzepeibjw/video/upload/.../file.mp4
-  // The current asset.cloudinary.com link is an Asset Share page, so the
-  // browser cannot decode it as a video stream.
-  src: "https://res.cloudinary.com/dzepeibjw/video/upload/v1778459937/yeipi/videos/nyc_pimqg9.mp4",
+  src: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/HABANERO%20NEGRO%20-%207%20ANIVERSARIO.m4v",
   poster:
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85",
+    "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1600&q=85",
 };
 
 export const heroFrames = [
@@ -50,30 +46,30 @@ export const heroFrames = [
 ];
 
 export const proofLines = [
-  "launch films",
-  "brand stories",
-  "wedding chapters",
-  "event aftermovies",
-  "quiet portraits",
-  "product worlds",
+  "videos de lanzamiento",
+  "historias de marca",
+  "capítulos de boda",
+  "aftermovies",
+  "retratos íntimos",
+  "mundos de producto",
 ];
 
 export const projects = [
   {
-    title: "The Room Before It Opens",
-    category: "Event Film",
+    title: "La sala antes de abrir",
+    category: "Video de evento",
     image:
       "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1400&q=85",
   },
   {
-    title: "Every Detail Had a Pulse",
-    category: "Brand Photography",
+    title: "Cada detalle tenía pulso",
+    category: "Fotografía de marca",
     image:
       "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1400&q=85",
   },
   {
-    title: "A City, A Couple, A Promise",
-    category: "Wedding Cinema",
+    title: "Una ciudad, dos personas, una promesa",
+    category: "Cine de boda",
     image:
       "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=85",
   },
@@ -81,39 +77,39 @@ export const projects = [
 
 export const services = [
   {
-    title: "Films",
+    title: "Cine",
     description:
-      "Campaigns, events, weddings, and social stories shaped with pacing, sound, and feeling.",
+      "Campañas, eventos, bodas e historias sociales construidas con ritmo, sonido y emoción.",
     icon: Film,
   },
   {
-    title: "Photography",
+    title: "Fotografía",
     description:
-      "Editorial image sets for people, places, products, and moments that need to feel considered.",
+      "Series editoriales para personas, lugares, productos y momentos que necesitan sentirse intencionales.",
     icon: Camera,
   },
   {
-    title: "Direction",
+    title: "Dirección",
     description:
-      "Concept, shot planning, locations, and visual language before the first frame is captured.",
+      "Concepto, planeación de tomas, locaciones y lenguaje visual antes de capturar el primer cuadro.",
     icon: Clapperboard,
   },
 ];
 
 export const process = [
   {
-    title: "Find the point of view",
-    text: "We start by understanding what the audience should feel, remember, and do next.",
+    title: "Encontrar el punto de vista",
+    text: "Empezamos entendiendo qué debe sentir, recordar y hacer después la audiencia.",
     icon: Aperture,
   },
   {
-    title: "Build the scene",
-    text: "We design the rhythm: light, movement, framing, schedule, and the small moments that carry the story.",
+    title: "Construir la escena",
+    text: "Diseñamos el ritmo: luz, movimiento, encuadre, agenda y esos detalles que sostienen la historia.",
     icon: Sparkles,
   },
   {
-    title: "Deliver the cut",
-    text: "You receive polished assets ready for web, social, campaigns, or a room full of people.",
+    title: "Entregar el corte",
+    text: "Recibes piezas pulidas para web, redes, campañas o una sala llena de personas.",
     icon: BadgeCheck,
   },
 ];

@@ -1,147 +1,211 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type React from "react";
 import { Aperture, Clapperboard, Home, MessageCircle, Sparkles } from "lucide-react";
 
 const dockItems = [
   { label: "Inicio", href: "#top", icon: Home },
   { label: "Historia", href: "#story", icon: Sparkles },
-  { label: "Work", href: "#work", icon: Aperture },
+  { label: "Proyectos", href: "#work", icon: Aperture },
   { label: "Servicios", href: "#services", icon: Clapperboard },
 ];
 
-type GlassFilterConfig = {
-  chromaticAberration?: number;
-  depth: number;
+type GlassFilterOptions = {
   height: number;
-  radius: number;
-  strength: number;
   width: number;
+  radius: number;
+  depth: number;
+  strength?: number;
+  chromaticAberration?: number;
 };
 
-function getDisplacementMap({ height, width, radius, depth }: GlassFilterConfig) {
-  const yStart = Math.ceil((radius / height) * 15);
-  const yEnd = Math.floor(100 - (radius / height) * 15);
-  const xStart = Math.ceil((radius / width) * 15);
-  const xEnd = Math.floor(100 - (radius / width) * 15);
+const getDisplacementMap = ({ height, width, radius, depth }: GlassFilterOptions) =>
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(`<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      .mix { mix-blend-mode: screen; }
+    </style>
+    <defs>
+      <linearGradient
+        id="Y"
+        x1="0"
+        x2="0"
+        y1="${Math.ceil((radius / height) * 15)}%"
+        y2="${Math.floor(100 - (radius / height) * 15)}%">
+        <stop offset="0%" stop-color="#0F0" />
+        <stop offset="100%" stop-color="#000" />
+      </linearGradient>
+      <linearGradient
+        id="X"
+        x1="${Math.ceil((radius / width) * 15)}%"
+        x2="${Math.floor(100 - (radius / width) * 15)}%"
+        y1="0"
+        y2="0">
+        <stop offset="0%" stop-color="#F00" />
+        <stop offset="100%" stop-color="#000" />
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" height="${height}" width="${width}" fill="#808080" />
+    <g filter="blur(1px)">
+      <rect x="0" y="0" height="${height}" width="${width}" fill="#000080" />
+      <rect x="0" y="0" height="${height}" width="${width}" fill="url(#Y)" class="mix" />
+      <rect x="0" y="0" height="${height}" width="${width}" fill="url(#X)" class="mix" />
+      <rect
+        x="${depth}"
+        y="${depth}"
+        height="${height - 2 * depth}"
+        width="${width - 2 * depth}"
+        fill="#808080"
+        rx="${radius}"
+        ry="${radius}"
+        filter="blur(${depth}px)"
+      />
+    </g>
+  </svg>`);
 
-  return `data:image/svg+xml;utf8,${encodeURIComponent(`
-    <svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
-      <style>.mix{mix-blend-mode:screen;}</style>
-      <defs>
-        <linearGradient id="Y" x1="0" x2="0" y1="${yStart}%" y2="${yEnd}%">
-          <stop offset="0%" stop-color="#0F0" />
-          <stop offset="100%" stop-color="#000" />
-        </linearGradient>
-        <linearGradient id="X" x1="${xStart}%" x2="${xEnd}%" y1="0" y2="0">
-          <stop offset="0%" stop-color="#F00" />
-          <stop offset="100%" stop-color="#000" />
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" height="${height}" width="${width}" fill="#808080" />
-      <g filter="blur(1px)">
-        <rect x="0" y="0" height="${height}" width="${width}" fill="#000080" />
-        <rect x="0" y="0" height="${height}" width="${width}" fill="url(#Y)" class="mix" />
-        <rect x="0" y="0" height="${height}" width="${width}" fill="url(#X)" class="mix" />
-        <rect
-          x="${depth}"
-          y="${depth}"
-          height="${height - 2 * depth}"
-          width="${width - 2 * depth}"
-          fill="#808080"
-          rx="${radius}"
-          ry="${radius}"
-          filter="blur(${depth}px)"
-        />
-      </g>
-    </svg>
-  `)}`;
-}
-
-function getDisplacementFilter({
-  chromaticAberration = 0,
-  depth,
+const getDisplacementFilter = ({
   height,
-  radius,
-  strength,
   width,
-}: GlassFilterConfig) {
-  const displacementMap = getDisplacementMap({
-    depth,
-    height,
-    radius,
-    strength,
-    width,
-  });
-
-  return `url("data:image/svg+xml;utf8,${encodeURIComponent(`
-    <svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="displace" color-interpolation-filters="sRGB">
-          <feImage x="0" y="0" height="${height}" width="${width}" href="${displacementMap}" result="displacementMap" />
-          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength + chromaticAberration * 2}" xChannelSelector="R" yChannelSelector="G" />
-          <feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="displacedR" />
-          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength + chromaticAberration}" xChannelSelector="R" yChannelSelector="G" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="displacedG" />
-          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength}" xChannelSelector="R" yChannelSelector="G" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="displacedB" />
-          <feBlend in="displacedR" in2="displacedG" mode="screen" />
-          <feBlend in2="displacedB" mode="screen" />
-        </filter>
-      </defs>
-    </svg>
-  `)}#displace")`;
-}
-
-function useLiquidGlassFilter(
-  radius: number,
-  depth: number,
-  strength: number,
+  radius,
+  depth,
+  strength = 100,
   chromaticAberration = 0,
-) {
+}: GlassFilterOptions) =>
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(`<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="displace" color-interpolation-filters="sRGB">
+        <feImage x="0" y="0" height="${height}" width="${width}" href="${getDisplacementMap({
+          height,
+          width,
+          radius,
+          depth,
+        })}" result="displacementMap" />
+        <feDisplacementMap
+          transform-origin="center"
+          in="SourceGraphic"
+          in2="displacementMap"
+          scale="${strength + chromaticAberration * 2}"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+        <feColorMatrix
+          type="matrix"
+          values="1 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0"
+          result="displacedR"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="displacementMap"
+          scale="${strength + chromaticAberration}"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0
+                  0 1 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0"
+          result="displacedG"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="displacementMap"
+          scale="${strength}"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 1 0 0
+                  0 0 0 1 0"
+          result="displacedB"
+        />
+        <feBlend in="displacedR" in2="displacedG" mode="screen" />
+        <feBlend in2="displacedB" mode="screen" />
+      </filter>
+    </defs>
+  </svg>`) +
+  "#displace";
+
+type GlassSurfaceProps = {
+  children: React.ReactNode;
+  className: string;
+  radius: number;
+  depth: number;
+  blur?: number;
+  strength?: number;
+  chromaticAberration?: number;
+  style?: React.CSSProperties;
+};
+
+function GlassSurface({
+  children,
+  className,
+  radius,
+  depth: baseDepth,
+  blur = 2,
+  strength = 100,
+  chromaticAberration = 0,
+  style,
+}: GlassSurfaceProps) {
   const ref = useRef<HTMLDivElement | HTMLAnchorElement>(null);
-  const [size, setSize] = useState({ height: 0, width: 0 });
+  const [filter, setFilter] = useState(`blur(${blur}px) brightness(1.1) saturate(1.5)`);
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+    const updateFilter = () => {
+      const rect = ref.current?.getBoundingClientRect();
+      if (!rect) return;
 
-    const updateSize = () => {
-      const rect = node.getBoundingClientRect();
-      setSize({
-        height: Math.round(rect.height),
-        width: Math.round(rect.width),
-      });
+      const height = Math.round(rect.height);
+      const width = Math.round(rect.width);
+      if (!height || !width) return;
+
+      setFilter(
+        `blur(${blur / 2}px) url('${getDisplacementFilter({
+          height,
+          width,
+          radius,
+          depth: baseDepth,
+          strength,
+          chromaticAberration,
+        })}') blur(${blur}px) brightness(1.1) saturate(1.5)`
+      );
     };
 
-    updateSize();
-    const observer = new ResizeObserver(updateSize);
-    observer.observe(node);
+    updateFilter();
+    const observer = new ResizeObserver(updateFilter);
+    if (ref.current) observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, []);
+  }, [baseDepth, blur, chromaticAberration, radius, strength]);
 
-  const filter = useMemo(() => {
-    if (!size.height || !size.width) return "blur(22px) saturate(185%)";
-
-    return `blur(0.5px) ${getDisplacementFilter({
-      chromaticAberration,
-      depth,
-      height: size.height,
-      radius,
-      strength,
-      width: size.width,
-    })} blur(7px) brightness(1.08) saturate(1.55)`;
-  }, [chromaticAberration, depth, radius, size.height, size.width, strength]);
-
-  return [ref, filter] as const;
+  return (
+    <div
+      className={className}
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={
+        {
+          ...style,
+          "--glass-filter": filter,
+        } as React.CSSProperties
+      }
+    >
+      {children}
+    </div>
+  );
 }
 
 export function MobileDock() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [dockRef, dockFilter] = useLiquidGlassFilter(30, 9, 76, 1.2);
-  const [actionRef, actionFilter] = useLiquidGlassFilter(34, 8, 70, 1.6);
+  const [isDockVisible, setIsDockVisible] = useState(false);
 
   useEffect(() => {
     const syncActiveItem = () => {
@@ -156,22 +220,36 @@ export function MobileDock() {
     return () => window.removeEventListener("hashchange", syncActiveItem);
   }, []);
 
+  useEffect(() => {
+    const syncDockVisibility = () => {
+      setIsDockVisible(window.scrollY > Math.min(180, window.innerHeight * 0.18));
+    };
+
+    syncDockVisibility();
+    window.addEventListener("scroll", syncDockVisibility, { passive: true });
+    window.addEventListener("resize", syncDockVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", syncDockVisibility);
+      window.removeEventListener("resize", syncDockVisibility);
+    };
+  }, []);
+
   return (
     <nav
-      className="mobile-dock"
-      aria-label="Mobile navigation"
-      style={
-        {
-          "--active-index": activeIndex,
-          "--action-liquid-filter": actionFilter,
-          "--dock-liquid-filter": dockFilter,
-        } as React.CSSProperties
-      }
+      className={isDockVisible ? "mobile-dock is-visible" : "mobile-dock"}
+      aria-label="Navegación móvil"
+      aria-hidden={!isDockVisible}
+      style={{ "--active-index": activeIndex } as React.CSSProperties}
     >
-      <div className="dock-glass" ref={dockRef as React.RefObject<HTMLDivElement>}>
-        <div className="dock-filter" />
-        <div className="dock-tint" />
-        <div className="dock-specular" />
+      <GlassSurface
+        className="dock-glass"
+        radius={32}
+        depth={10}
+        blur={1}
+        strength={100}
+        chromaticAberration={5}
+      >
         <div className="dock-indicator" />
         <div className="dock-items">
           {dockItems.map((item) => (
@@ -180,23 +258,25 @@ export function MobileDock() {
               href={item.href}
               key={item.href}
             >
-              <item.icon aria-hidden="true" size={24} strokeWidth={2.2} />
+              <item.icon aria-hidden="true" size={24} strokeWidth={2.25} />
               <span>{item.label}</span>
             </a>
           ))}
         </div>
-      </div>
-      <a
+      </GlassSurface>
+
+      <GlassSurface
         className="dock-action"
-        href="#contact"
-        aria-label="Contactar"
-        ref={actionRef as React.RefObject<HTMLAnchorElement>}
+        radius={38}
+        depth={10}
+        blur={1}
+        strength={100}
+        chromaticAberration={0}
       >
-        <span className="dock-action-filter" />
-        <span className="dock-action-tint" />
-        <span className="dock-action-specular" />
-        <MessageCircle aria-hidden="true" size={30} strokeWidth={2.3} />
-      </a>
+        <a href="#contact" aria-label="Contactar">
+          <MessageCircle aria-hidden="true" size={30} strokeWidth={2.35} />
+        </a>
+      </GlassSurface>
     </nav>
   );
 }
