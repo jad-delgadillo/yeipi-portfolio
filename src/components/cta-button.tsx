@@ -1,5 +1,4 @@
 import type React from "react";
-import { ctaIcon as ArrowRight } from "@/lib/site-content";
 
 type CTAButtonProps = {
   children: React.ReactNode;
@@ -10,9 +9,9 @@ export function CTAButton({ children, href }: CTAButtonProps) {
   return (
     <a className="cta-button" href={href}>
       <span>{children}</span>
-      <span className="cta-icon" aria-hidden="true">
+      {/* <span className="cta-icon" aria-hidden="true">
         <ArrowRight size={18} strokeWidth={2.1} />
-      </span>
+      </span> */}
     </a>
   );
 }

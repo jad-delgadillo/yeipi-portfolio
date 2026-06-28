@@ -16,3 +16,4 @@ A Next.js portfolio landing page for a photo and video creator positioning their
 npm install
 npm run dev
 ```
+# yeipi-portfolio

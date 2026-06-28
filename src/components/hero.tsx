@@ -1,43 +1,51 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { BadgeCheck, MessageCircle } from "lucide-react";
+import { useRef, useState } from "react";
+import { Search, ShoppingBag, Play, Pause } from "lucide-react";
 import { CTAButton } from "@/components/cta-button";
-import { brand, heroVideo } from "@/lib/site-content";
+import { heroVideo } from "@/lib/site-content";
 
 export function Hero() {
-  const shellRef = useRef<HTMLElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: shellRef,
-    offset: ["start start", "end start"],
-  });
-  const heroScale = useTransform(scrollYProgress, [0, 0.38, 0.72], [1, 0.965, 0.94]);
-  const heroRadius = useTransform(scrollYProgress, [0, 0.38, 0.72], ["0px", "18px", "28px"]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 641px)");
-    const update = () => setIsDesktop(media.matches);
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
 
-    update();
-    media.addEventListener("change", update);
-
-    return () => media.removeEventListener("change", update);
-  }, []);
+    if (isPlaying) {
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
-    <section ref={shellRef} className="hero-shell" id="top" aria-labelledby="hero-title">
-      <motion.div
-        className="hero-section"
-        style={isDesktop ? { scale: heroScale, borderRadius: heroRadius } : undefined}
-      >
-        <motion.div
-          className="hero-media"
-          initial={false}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
+    <section className="hero-shell" id="top" aria-labelledby="hero-title">
+      <div className="hero-section">
+        {/* Navigation Bar inside the hero on Desktop */}
+        <header className="hero-top-nav" aria-label="Navegación del sitio">
+          <div className="hero-top-nav-inner">
+            <a href="#top" className="hero-top-nav-logo" aria-label="Inicio">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+              </svg>
+            </a>
+            <div className="hero-top-nav-links">
+              <a href="#work">Proyectos</a>
+              <a href="#story">La historia</a>
+              <a href="#services">Servicios</a>
+              <a href="#contact">Contacto</a>
+            </div>
+            <div className="hero-top-nav-actions">
+              <Search size={15} strokeWidth={2.4} aria-label="Buscar" />
+              <ShoppingBag size={15} strokeWidth={2.4} aria-label="Bolsa" />
+            </div>
+          </div>
+        </header>
+
+        <div className="hero-media">
           <video
             aria-hidden="true"
             autoPlay
@@ -46,56 +54,77 @@ export function Hero() {
             playsInline
             poster={heroVideo.poster}
             preload="metadata"
+            ref={videoRef}
           >
             <source src={heroVideo.src} type="video/mp4" />
           </video>
           <div className="hero-scrim" />
-        </motion.div>
-        <motion.div
-          className="hero-content app-profile"
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="flex w-full justify-between font-bold opacity-80 text-sm" aria-hidden="true">
+        </div>
+
+        {/* Round Play/Pause Video Toggle Button in Top Right */}
+        <div className="hero-controls-row">
+          <button
+            className="hero-play-pause-btn"
+            onClick={togglePlay}
+            aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
+            type="button"
+          >
+            {isPlaying ? (
+              <Pause size={16} fill="currentColor" strokeWidth={0} />
+            ) : (
+              <Play size={16} fill="currentColor" strokeWidth={0} />
+            )}
+          </button>
+        </div>
+
+        <div className="hero-content app-profile">
+          <div className="flex md:hidden block w-full justify-between font-bold opacity-80 text-sm" aria-hidden="true">
             <span>El Yeipi</span>
             <span>Portfolio</span>
           </div>
 
-          <div className="rounded-3xl p-4 gap-2 bg-black/40 backdrop-blur-lg border border-white/10 flex flex-col">
-            {/* <h1>{brand.name} <BadgeCheck aria-hidden="true" size={19} strokeWidth={2.4} /></h1> */}
-            {/* <p className="hero-kicker">{brand.location}</p> */}
-            <h4 className="text-3xl!" id="hero-title">Historias reales con feeling de cine.</h4>
-            <p className="text-xs">
-              Cine, fotografía y dirección para marcas, bodas y momentos que
-              necesitan sentirse vivos.
-            </p>
-
-            {/* <div className="profile-stats">
-              <div>
-                <strong>48</strong>
-                <span>films</span>
-              </div>
-              <div>
-                <strong>12K</strong>
-                <span>views</span>
-              </div>
-              <div>
-                <strong>360</strong>
-                <span>stories</span>
-              </div>
-            </div> */}
+          {/* Mobile Hero Copy card */}
+          <div className="hero-card-mobile block md:hidden flex flex-col bg-transparent backdrop-blur-lg backdrop-filter backdrop-brightness-50 border-white/10 border-[1px] rounded-3xl p-4">
+            <div className="flex flex-col gap-2 mb-2">
+              <h1 id="hero-title-mobile" className="font-light text-3xl">
+                Historias reales, hechas cine.
+              </h1>
+              <p className="text-xs">
+                Cine, fotografía y dirección para marcas, bodas y momentos que
+                necesitan sentirse vivos.
+              </p>
+            </div>
 
             <div className="profile-actions">
               <CTAButton href="#work">Ver proyectos</CTAButton>
-              <a className="ghost-action" href="#contact">
-                <MessageCircle aria-hidden="true" size={18} strokeWidth={2.1} />
+              <a className="ghost-action border-none!" href="#contact">
                 Hablemos
               </a>
             </div>
           </div>
-        </motion.div>
-      </motion.div>
+
+          {/* Desktop Hero Layout: Copy on bottom left, CTA on bottom right */}
+          <div className="hero-bottom-row hidden md:flex">
+            <div className="desktop-hero-copy">
+              <p className="hero-kicker">El Yeipi</p>
+              <h1 id="hero-title">Historias reales, hechas cine.</h1>
+              <p className="desktop-hero-description">
+                Cine, fotografía y dirección para marcas, bodas y momentos que
+                necesitan sentirse vivos.
+              </p>
+            </div>
+
+            <div className="hero-cta-column">
+              <div className="hero-cta-capsule">
+                <span>MX / Worldwide</span>
+                <a className="hero-cta-blue-btn" href="#contact">
+                  Hablemos
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

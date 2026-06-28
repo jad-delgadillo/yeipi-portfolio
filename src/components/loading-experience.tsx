@@ -13,9 +13,10 @@ const defaultGrid = {
 function getMosaicGrid() {
   const isMobile = window.matchMedia("(max-width: 640px)").matches;
   const targetTileSize = isMobile ? 100 : 150;
+  const columns = Math.max(4, Math.ceil(window.innerWidth / targetTileSize));
 
   return {
-    columns: Math.max(4, Math.ceil(window.innerWidth / targetTileSize)),
+    columns: columns % 2 === 0 ? columns : columns + 1,
     rows: Math.max(4, Math.ceil(window.innerHeight / targetTileSize)),
   };
 }
