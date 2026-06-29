@@ -63,7 +63,7 @@ export default function Home() {
 
         <SelectedClients />
 
-        <section className="services-section md:hidden" id="services" aria-labelledby="services-title">
+        {/* <section className="services-section md:hidden" id="services" aria-labelledby="services-title">
           <Reveal className="services-intro">
             <p className="eyebrow text-[#F9583C]! normal-case! text-lg! pb-4">Lo que puedes pedir</p>
             <h2 id="services-title">
@@ -79,7 +79,7 @@ export default function Home() {
           </Reveal>
 
           <ServicesShowcase services={services} />
-        </section>
+        </section> */}
         <StickySectionNav />
 
         <section className="process-section" aria-labelledby="process-title">

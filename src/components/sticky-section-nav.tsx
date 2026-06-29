@@ -1,7 +1,7 @@
 export function StickySectionNav() {
   return (
     <div className="sticky-section-nav-wrap" aria-label="Navegación principal">
-      <nav className="sticky-section-nav bg-black/80!">
+      <nav className="sticky-section-nav">
         <a className="sticky-section-brand" href="#top" aria-label="Ir al inicio">
           El Yeipi
         </a>
