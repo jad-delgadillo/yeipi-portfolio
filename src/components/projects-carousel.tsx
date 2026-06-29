@@ -1,6 +1,6 @@
 "use client";
 
-import { Pause, Play, RotateCcw } from "lucide-react";
+import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { CinematicCard } from "@/components/cinematic-card";
@@ -11,6 +11,8 @@ type Project = {
   description: string;
   poster: string;
   video: string;
+  format: string;
+  ideal?: string;
 };
 
 type ProjectsCarouselProps = {
@@ -34,6 +36,19 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(media.matches);
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches);
+    };
+    media.addEventListener("change", handleMediaChange);
+    return () => {
+      media.removeEventListener("change", handleMediaChange);
+    };
+  }, []);
 
   const getCards = useCallback(() => {
     const track = trackRef.current;
@@ -243,6 +258,105 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
     }
   }, [activeIndex, isPlaying]);
 
+  if (isDesktop) {
+    const activeProject = projects[activeIndex];
+    const handlePrev = () => {
+      setActiveIndex((current) => (current === 0 ? projects.length - 1 : current - 1));
+    };
+    const handleNext = () => {
+      setActiveIndex((current) => (current === projects.length - 1 ? 0 : current + 1));
+    };
+
+    return (
+      <div className="projects-stripe-container" aria-label="Portafolio de proyectos">
+        {/* Header */}
+        <div className="projects-stripe-header">
+          <div className="projects-stripe-title-side">
+            <p className="eyebrow text-[#F9583C]! normal-case! text-lg! pb-2">En acción</p>
+            <h2 id="work-title" className="text-4xl md:text-5xl font-black">Historias con pulso.</h2>
+          </div>
+          <div className="projects-stripe-actions-side">
+            <button
+              onClick={handlePrev}
+              aria-label="Proyecto anterior"
+              className="projects-stripe-arrow"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Proyecto siguiente"
+              className="projects-stripe-arrow"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+
+        <p className="text-neutral-400 font-extralight text-base max-w-2xl mt-2 mb-6 leading-relaxed">
+          El trabajo puede tomar muchas formas, pero siempre parte de una intención concreta: presentar, documentar, lanzar, recordar o sostener presencia con una mirada cuidada.
+        </p>
+
+        {/* Carousel Track */}
+        <div className="projects-stripe-track">
+          {projects.map((project, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <div
+                className={`projects-stripe-card-wrapper ${isActive ? "is-active" : ""}`}
+                key={project.title}
+                onClick={() => setActiveIndex(index)}
+              >
+                <CinematicCard
+                  active={isActive}
+                  className="projects-stripe-card"
+                  description=""
+                  label=""
+                  posterSrc={project.poster}
+                  title=""
+                  videoSrc={project.video}
+                />
+
+                {/* Overlay Title on Card (Only when active or collapsed in a subtle way) */}
+                <div className="projects-stripe-card-overlay">
+                  {isActive ? (
+                    <div className="active-card-info">
+                      <span className="card-category-tag">{project.category}</span>
+                      <h3>{project.title}</h3>
+                    </div>
+                  ) : (
+                    <div className="collapsed-card-info">
+                      <h3>{project.title}</h3>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Active Project Footer Details (Below the active card) */}
+        <div className="projects-stripe-footer">
+          <div className="projects-stripe-footer-desc">
+            <p>{activeProject.description}</p>
+          </div>
+          <div className="projects-stripe-footer-meta">
+            <div className="meta-item">
+              <span className="meta-label">Formato</span>
+              <span className="meta-value">{activeProject.format}</span>
+            </div>
+            {activeProject.ideal && (
+              <div className="meta-item">
+                <span className="meta-label">Ideal para</span>
+                <span className="meta-value">{activeProject.ideal}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="projects-carousel">
       <div
@@ -312,4 +426,5 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
       </div>
     </div>
   );
+
 }

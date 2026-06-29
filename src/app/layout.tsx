@@ -1,9 +1,31 @@
 import type { Metadata } from "next";
 import type React from "react";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/700.css";
+import { Saira } from "next/font/google";
+import "@fontsource/barlow/100.css";
+import "@fontsource/barlow/100-italic.css";
+import "@fontsource/barlow/200.css";
+import "@fontsource/barlow/200-italic.css";
+import "@fontsource/barlow/300.css";
+import "@fontsource/barlow/300-italic.css";
+import "@fontsource/barlow/400.css";
+import "@fontsource/barlow/400-italic.css";
+import "@fontsource/barlow/500.css";
+import "@fontsource/barlow/500-italic.css";
+import "@fontsource/barlow/600.css";
+import "@fontsource/barlow/600-italic.css";
+import "@fontsource/barlow/700.css";
+import "@fontsource/barlow/700-italic.css";
+import "@fontsource/barlow/800.css";
+import "@fontsource/barlow/800-italic.css";
+import "@fontsource/barlow/900.css";
+import "@fontsource/barlow/900-italic.css";
 import "./globals.css";
+
+const saira = Saira({
+  subsets: ["latin"],
+  variable: "--font-saira",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yeipi.vercel.app"),
@@ -28,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={saira.variable}>
       <body>{children}</body>
     </html>
   );

@@ -20,6 +20,19 @@ export function ServicesShowcase({ services }: ServicesShowcaseProps) {
   const frameRef = useRef(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(media.matches);
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches);
+    };
+    media.addEventListener("change", handleMediaChange);
+    return () => {
+      media.removeEventListener("change", handleMediaChange);
+    };
+  }, []);
 
   const getCards = useCallback(() => {
     const track = trackRef.current;
@@ -82,6 +95,45 @@ export function ServicesShowcase({ services }: ServicesShowcaseProps) {
       window.removeEventListener("resize", scheduleActiveIndexUpdate);
     };
   }, [scheduleActiveIndexUpdate]);
+
+  if (isDesktop) {
+    return (
+      <div className="services-desktop-split">
+        <div className="services-list-side">
+          {services.map((service, index) => (
+            <div
+              className={`service-list-item ${index === activeIndex ? "is-active" : ""}`}
+              key={service.title}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
+              <div className="service-item-header">
+                <span className="service-num">{service.number}</span>
+                <h3 className="service-title">{service.title}</h3>
+              </div>
+              <div className="service-desc-wrapper">
+                <p className="service-desc">{service.description}</p>
+                <small className="service-ideal">Ideal para: {service.ideal}</small>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="services-image-side">
+          <div className="services-sticky-image-container">
+            {services.map((service, index) => (
+              <Image
+                alt=""
+                className={`service-sticky-image ${index === activeIndex ? "is-visible" : ""}`}
+                fill
+                key={service.title}
+                sizes="(min-width: 768px) 50vw, 400px"
+                src={service.image}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="services-showcase">

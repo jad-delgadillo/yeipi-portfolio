@@ -53,7 +53,7 @@ export function CinematicCard({
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [hasLoadedVideo, setHasLoadedVideo] = useState(false);
   const isControlled = active !== undefined;
-  const isActive = Boolean(active) || isLocallyActive;
+  const isActive = isControlled ? Boolean(active) : isLocallyActive;
 
   const pauseVideo = useCallback((resetPlayback = true) => {
     const video = videoRef.current;
@@ -237,11 +237,19 @@ export function CinematicCard({
   }, [cardId, deactivate, isControlled, pauseVideo, requestActivation]);
 
   const handlePointerEnter = () => {
+    if (isControlled) {
+      return;
+    }
+
     pointerFocusedRef.current = true;
     requestActivation(true);
   };
 
   const handlePointerLeave = () => {
+    if (isControlled) {
+      return;
+    }
+
     pointerFocusedRef.current = false;
 
     if (!isInPrimaryViewRef.current) {
@@ -250,11 +258,19 @@ export function CinematicCard({
   };
 
   const handleFocus = () => {
+    if (isControlled) {
+      return;
+    }
+
     pointerFocusedRef.current = true;
     requestActivation(true);
   };
 
   const handleBlur = () => {
+    if (isControlled) {
+      return;
+    }
+
     pointerFocusedRef.current = false;
 
     if (!isInPrimaryViewRef.current) {
