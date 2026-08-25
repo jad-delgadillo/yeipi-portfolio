@@ -103,7 +103,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
 
         {/* Details Grid */}
         <section className="project-detail-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-          
+
           {/* Card 1: Behind the Film */}
           <div className="detail-card bg-neutral-900/50 border border-white/5 rounded-3xl p-6 md:p-8">
             <h3 className="detail-card-title text-xs text-neutral-500 uppercase tracking-widest mb-4">DETRÁS DE CÁMARAS</h3>
@@ -123,7 +123,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
           {/* Card 3: The Making Of (Polaroid Stack) */}
           <div className="detail-card bg-neutral-900/50 border border-white/5 rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden min-h-[300px]">
             <h3 className="detail-card-title text-xs text-neutral-500 uppercase tracking-widest mb-4">THE MAKING OF</h3>
-            
+
             <div className="polaroid-stack-container my-auto">
               {project.btsImages.map((img, i) => (
                 <div key={i} className={`polaroid-card polaroid-card-${i}`}>

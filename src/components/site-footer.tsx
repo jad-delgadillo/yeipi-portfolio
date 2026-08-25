@@ -42,7 +42,7 @@ export function SiteFooter() {
       <div className="site-footer-inner">
         <div className="site-footer-rule" />
         <a className="site-footer-brand" href="#top" id="site-footer-title">
-          {brand.name}
+          el yeipi
         </a>
 
         <div className="site-footer-grid">
@@ -60,6 +60,11 @@ export function SiteFooter() {
 
         <div className="site-footer-bottom">
           <p>© 2026 {brand.name}. Cine, fotografía y dirección visual.</p>
+          <nav aria-label="For agents" className="site-footer-agents">
+            <span>For agents</span>
+            <a href="/llms.txt">LLMs.txt</a>
+            <a href="/sitemap.xml">Sitemap</a>
+          </nav>
           <a href={`mailto:${brand.email}`}>
             <Mail aria-hidden="true" size={18} strokeWidth={2.2} />
             {brand.email}

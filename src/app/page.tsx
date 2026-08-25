@@ -7,7 +7,6 @@ import { ProcessTimeline } from "@/components/process-timeline";
 import { Reveal } from "@/components/reveal";
 import { TextReveal } from "@/components/text-reveal";
 import { SelectedClients } from "@/components/selected-clients";
-import { ServicesShowcase } from "@/components/services-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { StickySectionNav } from "@/components/sticky-section-nav";
 import { WorksList } from "@/components/works-list";
@@ -16,7 +15,6 @@ import {
   brand,
   process,
   projects,
-  services,
 } from "@/lib/site-content";
 
 export default function Home() {
@@ -35,7 +33,7 @@ export default function Home() {
                 <p className="eyebrow">La premisa</p>
                 <TextReveal
                   text="La gente no conecta con más contenido. Conecta con historias que se sienten reales."
-                  className="md:text-7xl! md:font-bold md:leading-[0.90]! leading-[1.05]!"
+                  className="md:text-7xl! md:font-bold font-medium md:leading-[0.90]! leading-[0.90]!"
                   id="story-title"
                 />
               </div>
@@ -62,24 +60,6 @@ export default function Home() {
         </section>
 
         <SelectedClients />
-
-        {/* <section className="services-section md:hidden" id="services" aria-labelledby="services-title">
-          <Reveal className="services-intro">
-            <p className="eyebrow text-[#F9583C]! normal-case! text-lg! pb-4">Lo que puedes pedir</p>
-            <h2 id="services-title">
-              Formatos claros para historias que necesitan sentirse vivas.
-            </h2>
-            <div className="py-10 font-extralight! text-neutral-400">
-              <p>
-                El trabajo puede tomar muchas formas, pero siempre parte de una
-                intención concreta: presentar, documentar, lanzar, recordar o
-                sostener presencia con una mirada cuidada.
-              </p>
-            </div>
-          </Reveal>
-
-          <ServicesShowcase services={services} />
-        </section> */}
         <StickySectionNav />
 
         <section className="process-section" aria-labelledby="process-title">

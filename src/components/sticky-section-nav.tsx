@@ -3,7 +3,7 @@ export function StickySectionNav() {
     <div className="sticky-section-nav-wrap" aria-label="Navegación principal">
       <nav className="sticky-section-nav">
         <a className="sticky-section-brand" href="#top" aria-label="Ir al inicio">
-          El Yeipi
+          el yeipi
         </a>
         <div className="sticky-section-actions">
           <a className="sticky-section-link" href="#work">

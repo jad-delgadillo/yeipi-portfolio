@@ -1,35 +1,18 @@
 import type { Metadata } from "next";
 import type React from "react";
-import { Saira } from "next/font/google";
-import "@fontsource/barlow/100.css";
-import "@fontsource/barlow/100-italic.css";
-import "@fontsource/barlow/200.css";
-import "@fontsource/barlow/200-italic.css";
-import "@fontsource/barlow/300.css";
-import "@fontsource/barlow/300-italic.css";
-import "@fontsource/barlow/400.css";
-import "@fontsource/barlow/400-italic.css";
-import "@fontsource/barlow/500.css";
-import "@fontsource/barlow/500-italic.css";
-import "@fontsource/barlow/600.css";
-import "@fontsource/barlow/600-italic.css";
-import "@fontsource/barlow/700.css";
-import "@fontsource/barlow/700-italic.css";
-import "@fontsource/barlow/800.css";
-import "@fontsource/barlow/800-italic.css";
-import "@fontsource/barlow/900.css";
-import "@fontsource/barlow/900-italic.css";
+import { Instrument_Sans } from "next/font/google";
+import { siteUrl } from "@/lib/site-config";
 import "./globals.css";
 
-const saira = Saira({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-saira",
+  variable: "--font-instrument-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yeipi.vercel.app"),
-  title: "El Yeipi",
+  metadataBase: new URL(siteUrl),
+  title: "el yeipi",
   description:
     "Películas y fotografía para personas, marcas, lugares y momentos que merecen más que documentación.",
   openGraph: {
@@ -50,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={saira.variable}>
+    <html lang="es" className={instrumentSans.variable}>
       <body>{children}</body>
     </html>
   );

@@ -6,6 +6,10 @@ import { heroVideo } from "@/lib/site-content";
 export function Hero() {
   return (
     <section className="hero-shell" id="top" aria-labelledby="hero-title">
+      <div className="md:flex  md:block hidden absolute z-20 top-10 text-white left-0 px-12 md:w-full md:justify-between font-bold opacity-80 text-sm" aria-hidden="true">
+            <span>el yeipi</span>
+            <span>portfolio</span>
+          </div>
       <div className="hero-section">
         <div className="hero-media">
           <video
@@ -24,8 +28,8 @@ export function Hero() {
 
         <div className="hero-content app-profile">
           <div className="flex md:hidden block w-full justify-between font-bold opacity-80 text-sm" aria-hidden="true">
-            <span>El Yeipi</span>
-            <span>Portfolio</span>
+            <span>el yeipi</span>
+            <span>portfolio</span>
           </div>
 
           {/* Mobile Hero Copy card */}
@@ -51,7 +55,8 @@ export function Hero() {
           {/* Desktop Hero Layout: Centered copy & action buttons */}
           <div className="hero-bottom-row hidden md:flex">
             <div className="desktop-hero-copy">
-              <p className="hero-kicker">El Yeipi</p>
+              
+              {/* <p className="hero-kicker">el yeipi</p> */}
               <h1 id="hero-title" className="hero-title-font">Historias reales, hechas cine.</h1>
               <p className="desktop-hero-description hero-description-font">
                 Cine, fotografía y dirección para marcas, bodas y momentos que
