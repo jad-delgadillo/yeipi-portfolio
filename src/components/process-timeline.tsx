@@ -14,7 +14,7 @@ type ProcessTimelineProps = {
 const videoUrls = [
   "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/editorial/ffmpeg%20Corro.mp4",
   "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/sports/ffmpeg%20hyrox.mp4",
-  "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/bodas/JESSE%CC%81%20%26%20HILDA/ffmpeg%20wedding.mp4",
+  "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/historias%20de%20marca/ffmpeg%20rodo%20padilla%20herramientas.mp4",
 ];
 
 export function ProcessTimeline({ steps }: ProcessTimelineProps) {

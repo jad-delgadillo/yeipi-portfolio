@@ -6,16 +6,17 @@ const footerGroups = [
     title: "Trabajo",
     links: [
       { label: "Proyectos", href: "#work" },
-      { label: "Clientes", href: "#work" },
+      { label: "Marcas", href: "#work" },
       { label: "Lo que puedes pedir", href: "#services" },
+      { label: "Cómo trabajamos", href: "#process" },
     ],
   },
   {
     title: "Servicios",
     links: [
-      { label: "Brand films", href: "#services" },
-      { label: "Eventos y aftermovies", href: "#services" },
-      { label: "Contenido social", href: "#services" },
+      { label: "Contenido para negocios", href: "#services" },
+      { label: "Eventos y experiencias", href: "#services" },
+      { label: "Contenido recurrente", href: "#services" },
       { label: "Bodas documentales", href: "#services" },
     ],
   },

@@ -8,7 +8,7 @@ export const brand = {
 
 export const navItems = [
   { label: "Proyectos", href: "#work" },
-  { label: "La historia", href: "#story" },
+  { label: "Servicios", href: "#services" },
   { label: "Hablemos", href: "#contact" },
 ];
 
@@ -71,6 +71,26 @@ export const brandLogos = [
     name: "Electrolit",
     src: "/images/brands/Footer-Logo-New.svg",
     tone: "light",
+  },
+  {
+    name: "Culca",
+    src: "/images/brands/culca.svg",
+    tone: "light",
+  },
+  {
+    name: "DJI",
+    src: "/images/brands/dji.png",
+    tone: "dark",
+  },
+  {
+    name: "IKEA",
+    src: "/images/brands/ikea.svg",
+    tone: "color",
+  },
+  {
+    name: "Monocolo",
+    src: "/images/brands/monocolo.png",
+    tone: "dark",
   },
 ];
 
@@ -183,37 +203,37 @@ export const projects = [
 export const services = [
   {
     number: "01",
-    title: "Historias de marca",
+    title: "Contenido para tu negocio",
     description:
-      "para presentar una marca, producto o persona desde una narrativa clara, estética y emocionalmente memorable.",
-    ideal: "Lanzamientos, campañas, sitios web y presentaciones de marca.",
+      "Reels cinematográficos para mostrar tu espacio, producto y la experiencia de estar ahí.",
+    ideal: "Cafés, restaurantes, estudios, tiendas y marcas de lifestyle.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/historias%20de%20marca/poster.jpg",
   },
   {
     number: "02",
-    title: "Eventos con memoria",
+    title: "Eventos y experiencias",
     description:
-      "para transformar la energía de una noche en una pieza visual que conserva el ambiente, los momentos clave y lo que se sintió estar ahí.",
-    ideal: "Aperturas, aniversarios, experiencias, conciertos y eventos de marca.",
+      "La energía de una fecha convertida en una pieza que conserva el ambiente y hace que otros quieran vivirlo.",
+    ideal: "Carreras, pop-ups, aperturas, talleres y eventos de marca.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/restaurantes%20y%20bares/habanero%20negro/poster.jpg",
   },
   {
     number: "03",
-    title: "Contenido social",
+    title: "Contenido recurrente",
     description:
-      "con dirección visual, ritmo y una intención clara detrás de cada toma. Reels y cápsulas que no se sienten genéricos.",
-    ideal: "Presencia constante en redes, campañas digitales y lanzamientos.",
+      "Producción continua para mantener una presencia visual consistente sin repetir siempre la misma fórmula.",
+    ideal: "Marcas que necesitan reels, cápsulas y fotografía cada mes.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/sports/poster.jpg",
   },
   {
     number: "04",
-    title: "Foto editorial",
+    title: "Fotografía editorial",
     description:
-      "para construir presencia visual con retratos, producto, espacios y detalles cuidados desde una mirada estética.",
-    ideal: "Retrato, producto, lifestyle, espacios y materiales de marca.",
+      "Un complemento visual para construir presencia con retratos, producto, espacios y detalles cuidados.",
+    ideal: "Campañas, perfiles, producto, lifestyle y materiales de marca.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/editorial/poster.jpg",
   },
@@ -221,7 +241,7 @@ export const services = [
     number: "05",
     title: "Bodas documentales",
     description:
-      "para recordar el día desde lo real: menos pose, más memoria, gesto, atmósfera y verdad.",
+      "Una línea especializada para recordar el día desde lo real: menos pose, más memoria, gesto y atmósfera.",
     ideal: "Bodas íntimas, celebraciones familiares y recuerdos con sensibilidad documental.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/bodas/JESSE%CC%81%20%26%20HILDA/poster.jpg",
@@ -230,16 +250,16 @@ export const services = [
 
 export const process = [
   {
-    title: "La intención antes que la toma",
-    text: "Qué debe sentirse, recordarse o entenderse cuando la pieza termine.",
+    title: "Platicamos",
+    text: "Cuéntame qué haces, qué quieres comunicar y qué viene próximamente. No necesitas llegar con la idea resuelta.",
   },
   {
-    title: "Un lenguaje para cada historia",
-    text: "Luz, ritmo, encuadre y sonido se deciden según el mundo que la marca necesita construir.",
+    title: "Creamos",
+    text: "Aterrizamos la idea y grabamos buscando momentos naturales, movimiento y detalles que le den personalidad.",
   },
   {
-    title: "Una pieza que pueda vivir sola",
-    text: "Videos y fotografías listos para presentarse, compartirse y sostener presencia después del rodaje.",
+    title: "Lo convertimos en contenido",
+    text: "Edición, color, sonido y entrega de las piezas listas para publicar, compartir o lanzar.",
   },
 ];
 
