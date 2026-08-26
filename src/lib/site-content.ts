@@ -274,13 +274,18 @@ export const selectedWorks = [
     date: "DICIEMBRE 2025",
     category: "CINE DOCUMENTAL DE BODA",
     projectType: "Bodas",
-    duration: "4 MINUTOS 20 SEGUNDOS",
+    duration: "47 SEGUNDOS",
     videoSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/bodas/JESSE%CC%81%20%26%20HILDA/ffmpeg%20wedding.mp4",
     posterSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/bodas/JESSE%CC%81%20%26%20HILDA/poster.jpg",
-    links: [
-      { label: "Ver en Instagram", href: "https://instagram.com" },
-      { label: "Vimeo", href: "https://vimeo.com" }
+    intention: "Construir un recuerdo íntimo que se sintiera vivido: menos pose, más gesto, atmósfera y verdad.",
+    work: [
+      { title: "Dirección documental", description: "Una cobertura discreta para encontrar momentos reales sin interrumpirlos." },
+      { title: "Cámara y narrativa", description: "Una mirada cercana que conecta preparativos, ceremonia y celebración en un solo capítulo." },
+      { title: "Edición y sonido", description: "Ritmo, color y ambiente construidos para conservar la emoción del día." },
     ],
+    deliverables: ["Película principal · 0:47", "Master digital para compartir"],
+    usage: "La película quedó como una memoria central de la boda: una pieza completa para volver a verla, compartirla con la familia y conservar el pulso real del día.",
+    links: [],
     behindTheWork: "Un recuerdo íntimo y elegante. Nos enfocamos en capturar los gestos espontáneos, las risas reales y la atmósfera genuina del día, alejándonos de las poses tradicionales para contar una historia honesta y sensible.",
     technicalSpecs: "Cámara: Sony FX3\nÓptica: DzoFilm Vespid Prime 35mm & 75mm\nColor: DaVinci Resolve\nAudio: Sonido directo + Diseño ambiente",
     btsImages: [
@@ -303,12 +308,18 @@ export const selectedWorks = [
     date: "NOVIEMBRE 2025",
     category: "AFTERMOVIE DE MARCA",
     projectType: "Restaurantes y bares",
-    duration: "1 MINUTO 15 SEGUNDOS",
+    duration: "27 SEGUNDOS",
     videoSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/restaurantes%20y%20bares/habanero%20negro/ffmpeg%20HABANERO%20-%20NEGRO%20-%207%20ANIVERSARIO.mp4",
     posterSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/restaurantes%20y%20bares/habanero%20negro/poster.jpg",
-    links: [
-      { label: "Ver en Instagram", href: "https://instagram.com" }
+    intention: "Hacer que el séptimo aniversario se sintiera tan vivo en pantalla como se sintió dentro del lugar.",
+    work: [
+      { title: "Dirección de cobertura", description: "Una ruta visual pensada para capturar cocina, barra, invitados y momentos clave de la noche." },
+      { title: "Cámara en movimiento", description: "Planos cercanos y una energía física que meten al espectador en medio de la celebración." },
+      { title: "Montaje rítmico", description: "Edición, color y diseño sonoro guiados por el pulso musical del evento." },
     ],
+    deliverables: ["Aftermovie de marca · 0:27", "Master digital para redes"],
+    usage: "El aftermovie convirtió una noche irrepetible en una pieza de marca lista para extender la celebración en canales digitales y presentar la energía de Habanero Negro.",
+    links: [],
     behindTheWork: "Capturando la energía eléctrica del 7º aniversario de Habanero Negro. Una noche de cocinas calientes, copas, música y movimiento acelerado, editada al ritmo del pulso de la noche para transmitir una atmósfera electrizante.",
     technicalSpecs: "Cámara: RED Komodo 6K\nÓptica: Cooke S4/i Mini\nPostproducción: DaVinci Resolve\nRitmo: Editado bajo compás musical",
     btsImages: [
@@ -330,12 +341,18 @@ export const selectedWorks = [
     date: "MAYO 2025",
     category: "SPORTS CAMPAIGN",
     projectType: "Sports",
-    duration: "1 MINUTO",
+    duration: "37 SEGUNDOS",
     videoSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/sports/ffmpeg%20hyrox.mp4",
     posterSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/sports/poster.jpg",
-    links: [
-      { label: "Ver en Instagram", href: "https://instagram.com" }
+    intention: "Traducir el esfuerzo de la competencia en una pieza corta, física y cargada de adrenalina.",
+    work: [
+      { title: "Dirección de acción", description: "Seguimiento de atletas y momentos de máxima exigencia dentro de un entorno impredecible." },
+      { title: "Cinematografía deportiva", description: "Movimiento, detalle y proximidad para hacer visible la intensidad de cada prueba." },
+      { title: "Postproducción", description: "Montaje de alto ritmo y color orientados a una pieza de campaña digital." },
     ],
+    deliverables: ["Campaign film · 0:37", "Master digital para campaña"],
+    usage: "La pieza concentra la experiencia Hyrox en un corte de campaña: una presentación directa del esfuerzo, la comunidad y la energía competitiva alrededor de Adidas.",
+    links: [],
     behindTheWork: "Adrenalina, sudor y esfuerzo puro. Acompañamos a los atletas de Adidas en una sesión de alta intensidad para transmitir el dolor y la gloria de superar los límites propios en la competencia internacional Hyrox.",
     technicalSpecs: "Cámara: Sony FX6\nEstabilizador: DJI Ronin 2\nÓptica: Sigma Cine 18-35mm\nEdición: Adobe Premiere Pro",
     btsImages: [
@@ -358,12 +375,18 @@ export const selectedWorks = [
     date: "FEBRERO 2025",
     category: "BRAND DOCUMENTARY",
     projectType: "Historias de marca",
-    duration: "3 MINUTOS 10 SEGUNDOS",
+    duration: "12 SEGUNDOS",
     videoSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/historias%20de%20marca/ffmpeg%20rodo%20padilla%20herramientas.mp4",
     posterSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/historias%20de%20marca/poster.jpg",
-    links: [
-      { label: "Ver en Instagram", href: "https://instagram.com" }
+    intention: "Mostrar el oficio detrás de la obra y acercar al espectador al proceso material de un creador mexicano.",
+    work: [
+      { title: "Investigación narrativa", description: "Una historia construida alrededor del taller, las herramientas y la relación del artista con la materia." },
+      { title: "Dirección y fotografía", description: "Luz, textura y encuadres que dejan hablar al barro, al metal, al fuego y a las manos." },
+      { title: "Edición y paisaje sonoro", description: "Un montaje contemplativo acompañado por sonidos registrados dentro del propio taller." },
     ],
+    deliverables: ["Documental de marca · 0:12", "Master digital para presentación"],
+    usage: "El documental funciona como una introducción al universo de Rodo Padilla: una pieza para presentar al artista desde su proceso y no únicamente desde la obra terminada.",
+    links: [],
     behindTheWork: "Un viaje al taller del reconocido escultor mexicano Rodo Padilla. Observamos el modelado del bronce, el fuego de la fundición y la mirada de un creador que moldea historias en arcilla, metal y fuego.",
     technicalSpecs: "Cámara: Arri Alexa Mini LF\nÓptica: Angenieux EZ Zoom 1 & 2\nPostproducción: DaVinci Resolve Studio\nSonido: Foley grabado en taller",
     btsImages: [
@@ -386,12 +409,18 @@ export const selectedWorks = [
     date: "ENERO 2025",
     category: "EDITORIAL FILM",
     projectType: "Editorial",
-    duration: "45 SEGUNDOS",
+    duration: "6 SEGUNDOS",
     videoSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/editorial/ffmpeg%20Corro.mp4",
     posterSrc: "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/editorial/poster.jpg",
-    links: [
-      { label: "Ver en Instagram", href: "https://instagram.com" }
+    intention: "Crear un retrato editorial donde la indumentaria, la presencia y la luz compartieran el protagonismo.",
+    work: [
+      { title: "Dirección visual", description: "Una propuesta de luz dura, contraste y movimiento contenido para definir el tono de la pieza." },
+      { title: "Retrato en movimiento", description: "Encuadres y gestos pensados para revelar silueta, textura y actitud sin sobreexplicar." },
+      { title: "Edición y color", description: "Un montaje pausado y un tratamiento de color que sostienen el carácter editorial." },
     ],
+    deliverables: ["Editorial film · 0:06", "Master digital para publicación"],
+    usage: "La pieza presenta la colección como un mundo visual compacto, listo para vivir en canales digitales y acompañar materiales editoriales de la marca.",
+    links: [],
     behindTheWork: "Pieza de retrato estético y moda. Luces duras, sombras contrastadas y un ritmo pausado que deconstruye la elegancia y la textura de la indumentaria de la colección Corro.",
     technicalSpecs: "Cámara: Sony A7SIII\nÓptica: Zeiss Loxia Primes (Manual Focus)\nDirección Visual: El Yeipi\nColor: Film Convert Nitrate",
     btsImages: [
