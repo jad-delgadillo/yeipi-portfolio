@@ -6,8 +6,11 @@ export function StickySectionNav() {
           el yeipi
         </a>
         <div className="sticky-section-actions">
-          <a className="sticky-section-link" href="#work">
+          {/* <a className="sticky-section-link" href="#work">
             Proyectos
+          </a> */}
+          <a className="sticky-section-link sticky-section-services-link" href="#services">
+            Servicios
           </a>
           <a className="sticky-section-cta" href="#contact">
             Hablemos

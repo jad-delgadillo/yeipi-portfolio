@@ -18,6 +18,8 @@ const introSlides = [
   "Es cómo se sintió.",
 ] as const;
 
+const introTransitionDuration = 0.3;
+
 function IntroProgressRing({
   duration,
   reduceMotion,
@@ -58,9 +60,15 @@ export function LoadingExperience() {
   const [stage, setStage] = useState<LoaderStage>("intro");
   const [slideIndex, setSlideIndex] = useState(0);
   const [progressReady, setProgressReady] = useState(false);
-  const reduceMotion = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
+  const motionPreference = useReducedMotion();
+  const reduceMotion = hasMounted && Boolean(motionPreference);
   const isActive = stage !== "done";
   const slideDuration = reduceMotion ? 1200 : 2400;
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useLayoutEffect(() => {
     const navigationEntry = performance.getEntriesByType(
@@ -230,15 +238,18 @@ export function LoadingExperience() {
               exit={
                 reduceMotion
                   ? { opacity: 0 }
-                  : { opacity: 0, y: -18, filter: "blur(8px)" }
+                  : { opacity: 0, y: -10, filter: "blur(8px)" }
               }
               initial={
                 reduceMotion
                   ? { opacity: 0 }
-                  : { opacity: 0, y: 24, filter: "blur(9px)" }
+                  : { opacity: 0, y: 12, filter: "blur(9px)" }
               }
               key={introSlides[slideIndex]}
-              transition={{ duration: reduceMotion ? 0.15 : 0.75, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: reduceMotion ? 0.7 : introTransitionDuration,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
               {/* <p className="intro-index" aria-hidden="true">
                 0{slideIndex + 1} / 0{introSlides.length}
@@ -277,7 +288,7 @@ export function LoadingExperience() {
         <div className="loader-content">
           <div className="loader-brand">
             <p>el yeipi</p>
-            <span>producer, filmmaker, memory maker</span>
+            <span className=" capitalize! ">producer, filmmaker, memory maker</span>
           </div>
 
           <div className="loader-progress" aria-label="Cargando sitio">

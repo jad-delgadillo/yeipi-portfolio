@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Fragment } from "react";
 
 type TextRevealProps = {
   text: string;
@@ -47,17 +48,19 @@ export function TextReveal({ text, className, delay = 0, id }: TextRevealProps) 
       whileInView="visible"
     >
       {words.map((word, i) => (
-        <span
-          className="inline-block overflow-hidden mr-[0.22em] pt-0.5 pb-4 -mb-4"
-          key={`${word}-${i}`}
-        >
-          <motion.span
-            className="inline-block"
-            variants={wordVariants}
+        <Fragment key={`${word}-${i}`}>
+          <span
+            className="inline-block overflow-hidden pt-0.5 pb-4 -mb-4"
           >
-            {word}
-          </motion.span>
-        </span>
+            <motion.span
+              className="inline-block"
+              variants={wordVariants}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </motion.h2>
   );

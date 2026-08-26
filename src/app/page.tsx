@@ -5,12 +5,12 @@ import { LoadingExperience } from "@/components/loading-experience";
 import { ProjectsCarousel } from "@/components/projects-carousel";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { Reveal } from "@/components/reveal";
+import { ServicesSection } from "@/components/services-section";
 import { TextReveal } from "@/components/text-reveal";
 import { SelectedClients } from "@/components/selected-clients";
 import { SiteFooter } from "@/components/site-footer";
 import { StickySectionNav } from "@/components/sticky-section-nav";
 import { WorksList } from "@/components/works-list";
-import { StoryHud } from "@/components/story-hud";
 import {
   brand,
   process,
@@ -27,65 +27,93 @@ export default function Home() {
           <Hero />
 
           <section className="story-section-wrapper relative" id="story">
-            <StoryHud />
             <div className="story-block flex-col md:flex! md:max-w-4xl! md:text-center" aria-labelledby="story-title">
               <div>
-                <p className="eyebrow">La premisa</p>
+                <p className="eyebrow">La mirada</p>
                 <TextReveal
-                  text="La gente no conecta con más contenido. Conecta con historias que se sienten reales."
+                  text="Historias que se sienten."
                   className="md:text-7xl! md:font-bold font-medium md:leading-[0.90]! leading-[0.90]!"
                   id="story-title"
                 />
               </div>
               <Reveal delay={0.35}>
                 <p className="story-copy md:text-sm! md:font-extralight!">
-                  El verdadero arte de contar historias no está en la cámara, sino en encontrar el pulso de lo que sucede. Traducimos marcas, personas, celebraciones y lanzamientos en piezas de cine con un punto de vista definido. Imágenes diseñadas no solo para llenar una pantalla, sino para hacerte sentir que estuviste ahí.
+                  Personas, movimiento, lugares y pequeños momentos que hacen
+                  que una marca tenga personalidad. El objetivo no es mostrar
+                  más, sino hacer que alguien quiera estar ahí.
                 </p>
               </Reveal>
             </div>
           </section>
         </div>
 
+        <SelectedClients />
+
         <section className="work-section" id="work" aria-labelledby="work-title">
           <Reveal className="work-heading md:hidden">
             <p className="eyebrow light text-[#F9583C]! normal-case! text-lg! pb-4">En acción</p>
             <h2 id="work-title">Historias con pulso.</h2>
             <p>
-              Cinco mundos de trabajo, nombrados para que el cliente entienda la
-              intención antes de abrir el primer video.
+              Negocios, comunidades y experiencias distintas, contadas desde
+              una mirada cercana y cinematográfica.
             </p>
           </Reveal>
           <ProjectsCarousel projects={projects} />
           <WorksList />
         </section>
 
-        <SelectedClients />
-        <StickySectionNav />
+        <ServicesSection />
 
-        <section className="process-section" aria-labelledby="process-title">
+        <section className="process-section" id="process" aria-labelledby="process-title">
+          <StickySectionNav />
           <Reveal className="handoff-intro pt-10">
-            <p className="eyebrow">Antes de escribir</p>
+            <p className="eyebrow">Cómo trabajamos</p>
             <h2 id="process-title">
-              No necesitas tenerlo todo resuelto. Solo una historia que valga la pena mirar.
+              De una idea suelta a una pieza lista para publicar.
             </h2>
             <p>
-              Podemos partir de una marca, una fecha, una idea suelta, un lugar o
-              una emoción. El trabajo empieza encontrando qué debe sentirse, y
-              después se construye la forma: ritmo, imagen, sonido y entrega.
+              Tú conoces tu negocio. Yo te ayudo a encontrar qué vale la pena
+              contar y me encargo de convertirlo en contenido.
             </p>
           </Reveal>
           <ProcessTimeline steps={process} />
         </section>
 
+        <section className="about-section" id="about" aria-labelledby="about-title">
+          <div className="about-shell">
+            <Reveal className="about-heading">
+              <p className="eyebrow">Por qué Yeipi</p>
+              <TextReveal
+                id="about-title"
+                text="No busco solamente grabar lo que haces."
+              />
+            </Reveal>
+
+            <Reveal className="about-body" delay={0.18}>
+              <p>
+                Me interesa encontrar esos momentos que hacen que un lugar,
+                una comunidad o una experiencia se sienta especial. La cámara
+                se acerca a la acción sin quitarle verdad.
+              </p>
+              <div className="about-signals" aria-label="Rasgos de la mirada de Yeipi">
+                <span>Movimiento</span>
+                <span>Personas</span>
+                <span>Espacios</span>
+                <span>Momentos reales</span>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <FooterParallax id="contact" labelledBy="contact-title">
           <Reveal>
-            <p className="eyebrow light text-[#F9583C]! ">El siguiente plano</p>
-            <h2 id="contact-title">Trae la historia. Nosotros ponemos el cine.</h2>
+            <p className="eyebrow light text-[#F9583C]! ">Hagamos algo juntos</p>
+            <h2 id="contact-title">Cuéntame qué quieres hacer sentir.</h2>
             <p>
-              Con base en {brand.location}. Disponible para proyectos
-              comerciales, eventos, bodas y trabajo editorial.
+              Háblame de tu negocio, evento o proyecto. No necesitas tener la
+              idea resuelta: podemos aterrizarla juntos. Con base en {brand.location}.
             </p>
-            <CTAButton href={`mailto:${brand.email}`}>Empecemos la conversación</CTAButton>
+            <CTAButton href={`mailto:${brand.email}`}>Cuéntame tu idea</CTAButton>
           </Reveal>
         </FooterParallax>
       </div>

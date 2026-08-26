@@ -294,7 +294,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         </div>
 
         <p className="text-neutral-400 font-extralight text-base max-w-2xl mt-2 mb-6 leading-relaxed">
-          El trabajo puede tomar muchas formas, pero siempre parte de una intención concreta: presentar, documentar, lanzar, recordar o sostener presencia con una mirada cuidada.
+          Negocios, comunidades y experiencias distintas, contadas desde una mirada cercana y cinematográfica.
         </p>
 
         {/* Carousel Track */}
@@ -310,10 +310,10 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
                 <CinematicCard
                   active={isActive}
                   className="projects-stripe-card"
-                  description=""
-                  label=""
+                  description={project.description}
+                  label={project.category}
                   posterSrc={project.poster}
-                  title=""
+                  title={project.title}
                   videoSrc={project.video}
                 />
 
