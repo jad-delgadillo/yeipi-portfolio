@@ -1,5 +1,4 @@
-import { CTAButton } from "@/components/cta-button";
-import { FooterParallax } from "@/components/footer-parallax";
+import { ContactCta } from "@/components/contact-cta";
 import { Hero } from "@/components/hero";
 import { LoadingExperience } from "@/components/loading-experience";
 import { ProjectsCarousel } from "@/components/projects-carousel";
@@ -11,11 +10,7 @@ import { SelectedClients } from "@/components/selected-clients";
 import { SiteFooter } from "@/components/site-footer";
 import { StickySectionNav } from "@/components/sticky-section-nav";
 import { WorksList } from "@/components/works-list";
-import {
-  brand,
-  process,
-  projects,
-} from "@/lib/site-content";
+import { process, projects } from "@/lib/site-content";
 
 export default function Home() {
   return (
@@ -105,17 +100,7 @@ export default function Home() {
           </div>
         </section>
 
-        <FooterParallax id="contact" labelledBy="contact-title">
-          <Reveal>
-            <p className="eyebrow light text-[#F9583C]! ">Hagamos algo juntos</p>
-            <h2 id="contact-title">Cuéntame qué quieres hacer sentir.</h2>
-            <p>
-              Háblame de tu negocio, evento o proyecto. No necesitas tener la
-              idea resuelta: podemos aterrizarla juntos. Con base en {brand.location}.
-            </p>
-            <CTAButton href={`mailto:${brand.email}`}>Cuéntame tu idea</CTAButton>
-          </Reveal>
-        </FooterParallax>
+        <ContactCta />
       </div>
 
       <SiteFooter />
