@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 
 export const brand = {
-  name: "El Yeipi",
-  email: "hello@lumanorth.studio",
+  name: "el yeipi",
+  email: "hola@yeipi.co",
   location: "Guadalajara, MX / disponible en todo el mundo",
 };
 
