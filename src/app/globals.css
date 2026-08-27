@@ -2201,6 +2201,7 @@ button {
   color: var(--white);
   margin-top: -1px;
   overflow: hidden;
+  padding-inline: clamp(18px, 5vw, 54px);
   position: relative;
 }
 
@@ -2329,7 +2330,6 @@ button {
     grid-template-columns: 1fr;
     min-height: auto;
     padding-bottom: 112px;
-    padding-inline: 18px;
     padding-top: 112px;
   }
 
@@ -2713,7 +2713,7 @@ button {
 .contact-cta-section {
   background: var(--surface-dark);
   min-height: auto;
-  padding: clamp(56px, 5vw, 78px) 0 clamp(72px, 6vw, 96px);
+  padding: clamp(56px, 5vw, 78px) clamp(18px, 5vw, 54px) clamp(72px, 6vw, 96px);
 }
 
 .contact-cta-shell {
@@ -3009,13 +3009,15 @@ button {
   }
 }
 
+@media (max-width: 767px) {
+  .contact-cta-shell {
+    padding-inline: 0;
+  }
+}
+
 @media (max-width: 600px) {
   .contact-cta-section {
-    padding: 86px 0;
-  }
-
-  .contact-cta-shell {
-    padding-inline: 18px;
+    padding-block: 86px;
   }
 
   .contact-cta-copy {
