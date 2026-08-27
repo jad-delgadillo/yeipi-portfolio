@@ -74,12 +74,12 @@ export function ServicesSection() {
       <div className="services-mobile-list">
         {services.map((service) => (
           <article className="service-mobile-card" key={service.title}>
-            <Image
-              alt=""
+            <div
+              // alt="thumbnail"
               className="service-mobile-image"
-              fill
-              sizes="calc(100vw - 28px)"
-              src={service.image}
+              // fill
+              // sizes="calc(100vw - 28px)"
+              // src={service.image}
             />
             <div className="service-mobile-scrim" />
             <div className="service-mobile-copy">

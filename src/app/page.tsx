@@ -1,5 +1,4 @@
-import { CTAButton } from "@/components/cta-button";
-import { FooterParallax } from "@/components/footer-parallax";
+import { ContactCta } from "@/components/contact-cta";
 import { Hero } from "@/components/hero";
 import { LoadingExperience } from "@/components/loading-experience";
 import { ProjectsCarousel } from "@/components/projects-carousel";
@@ -11,11 +10,7 @@ import { SelectedClients } from "@/components/selected-clients";
 import { SiteFooter } from "@/components/site-footer";
 import { StickySectionNav } from "@/components/sticky-section-nav";
 import { WorksList } from "@/components/works-list";
-import {
-  brand,
-  process,
-  projects,
-} from "@/lib/site-content";
+import { process, projects } from "@/lib/site-content";
 
 export default function Home() {
   return (
@@ -51,7 +46,7 @@ export default function Home() {
 
         <section className="work-section" id="work" aria-labelledby="work-title">
           <Reveal className="work-heading md:hidden">
-            <p className="eyebrow light text-[#F9583C]! normal-case! text-lg! pb-4">En acción</p>
+            <p className="eyebrow light">En acción</p>
             <h2 id="work-title">Historias con pulso.</h2>
             <p>
               Negocios, comunidades y experiencias distintas, contadas desde
@@ -66,7 +61,7 @@ export default function Home() {
 
         <section className="process-section" id="process" aria-labelledby="process-title">
           <StickySectionNav />
-          <Reveal className="handoff-intro pt-10">
+          <Reveal className="handoff-intro">
             <p className="eyebrow">Cómo trabajamos</p>
             <h2 id="process-title">
               De una idea suelta a una pieza lista para publicar.
@@ -105,17 +100,7 @@ export default function Home() {
           </div>
         </section>
 
-        <FooterParallax id="contact" labelledBy="contact-title">
-          <Reveal>
-            <p className="eyebrow light text-[#F9583C]! ">Hagamos algo juntos</p>
-            <h2 id="contact-title">Cuéntame qué quieres hacer sentir.</h2>
-            <p>
-              Háblame de tu negocio, evento o proyecto. No necesitas tener la
-              idea resuelta: podemos aterrizarla juntos. Con base en {brand.location}.
-            </p>
-            <CTAButton href={`mailto:${brand.email}`}>Cuéntame tu idea</CTAButton>
-          </Reveal>
-        </FooterParallax>
+        <ContactCta />
       </div>
 
       <SiteFooter />
