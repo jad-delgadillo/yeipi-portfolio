@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type React from "react";
 import { Instrument_Sans } from "next/font/google";
 import { siteUrl } from "@/lib/site-config";
-// @ts-expect-error
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
