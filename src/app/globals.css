@@ -2224,7 +2224,7 @@ button {
   margin: 0 auto;
   max-width: var(--max);
   min-height: 86svh;
-  padding: clamp(96px, 12vw, 170px) clamp(18px, 5vw, 54px);
+  padding: clamp(96px, 12vw, 170px) 14px;
   position: relative;
   z-index: 1;
 }
@@ -2329,6 +2329,7 @@ button {
     grid-template-columns: 1fr;
     min-height: auto;
     padding-bottom: 112px;
+    padding-inline: 18px;
     padding-top: 112px;
   }
 
@@ -2712,14 +2713,17 @@ button {
 .contact-cta-section {
   background: var(--surface-dark);
   min-height: auto;
-  padding: clamp(56px, 5vw, 78px) var(--layout-gutter) clamp(72px, 6vw, 96px);
+  padding: clamp(56px, 5vw, 78px) 0 clamp(72px, 6vw, 96px);
 }
 
 .contact-cta-shell {
   align-items: start;
+  box-sizing: border-box;
   gap: clamp(64px, 8vw, 132px);
   grid-template-columns: minmax(300px, 0.78fr) minmax(560px, 1.22fr);
-  max-width: var(--layout-max-wide);
+  max-width: var(--max);
+  padding-inline: 14px;
+  width: 100%;
 }
 
 .contact-cta-copy {
@@ -3007,7 +3011,11 @@ button {
 
 @media (max-width: 600px) {
   .contact-cta-section {
-    padding: 86px 18px;
+    padding: 86px 0;
+  }
+
+  .contact-cta-shell {
+    padding-inline: 18px;
   }
 
   .contact-cta-copy {
