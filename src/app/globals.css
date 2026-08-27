@@ -1705,9 +1705,9 @@ button {
 }
 
 .service-mobile-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
-  min-height: 460px;
+  min-height: 300px;
   overflow: hidden;
   position: relative;
 }
@@ -1717,9 +1717,9 @@ button {
 }
 
 .service-mobile-scrim {
-  background:
+  /* background:
     linear-gradient(180deg, rgba(7, 7, 8, 0.04) 18%, rgba(7, 7, 8, 0.96) 100%),
-    linear-gradient(90deg, rgba(7, 7, 8, 0.32), transparent 70%);
+    linear-gradient(90deg, rgba(7, 7, 8, 0.32), transparent 70%); */
   inset: 0;
   position: absolute;
   z-index: 1;
@@ -3101,7 +3101,7 @@ button {
 
 .site-footer-rule {
   background: var(--border-dark);
-  height: 1px;
+  height: 0px;
   margin-bottom: clamp(34px, 5vw, 58px);
   width: 100%;
 }
@@ -4699,9 +4699,9 @@ button {
   padding: 13px 19px;
 }
 
-.project-next a:hover img {
+/* .project-next a:hover img {
   transform: scale(1.025);
-}
+} */
 
 .project-final-cta {
   background: var(--accent);
