@@ -46,7 +46,7 @@ export default function Home() {
 
         <section className="work-section" id="work" aria-labelledby="work-title">
           <Reveal className="work-heading md:hidden">
-            <p className="eyebrow light text-[#F9583C]! normal-case! text-lg! pb-4">En acción</p>
+            <p className="eyebrow light">En acción</p>
             <h2 id="work-title">Historias con pulso.</h2>
             <p>
               Negocios, comunidades y experiencias distintas, contadas desde
@@ -61,7 +61,7 @@ export default function Home() {
 
         <section className="process-section" id="process" aria-labelledby="process-title">
           <StickySectionNav />
-          <Reveal className="handoff-intro pt-10">
+          <Reveal className="handoff-intro">
             <p className="eyebrow">Cómo trabajamos</p>
             <h2 id="process-title">
               De una idea suelta a una pieza lista para publicar.

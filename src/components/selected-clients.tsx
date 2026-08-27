@@ -8,7 +8,7 @@ export function SelectedClients() {
     <section className="selected-clients-section" aria-labelledby="clients-title">
       <div className="selected-clients-shell">
         {/* <div className="selected-clients-heading flex flex-col gap-1 justfy-start items-start">
-          <p className="eyebrow light text-[#F9583C]! capitalize! text-lg!" id="clients-title">Marcas y proyectos</p>
+          <p className="eyebrow light" id="clients-title">Marcas y proyectos</p>
         </div> */}
       </div>
 

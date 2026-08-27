@@ -272,7 +272,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         {/* Header */}
         <div className="projects-stripe-header">
           <div className="projects-stripe-title-side">
-            <p className="eyebrow text-[#F9583C]! normal-case! text-lg! pb-2">En acción</p>
+            <p className="eyebrow">En acción</p>
             <h2 id="work-title" className="text-4xl md:text-5xl font-black">Historias con pulso.</h2>
           </div>
           <div className="projects-stripe-actions-side">

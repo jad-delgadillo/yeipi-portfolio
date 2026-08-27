@@ -37,7 +37,7 @@ export function WorksList() {
         <div className="works-list-header">
           <div className="works-list-title-row">
             <div className="flex flex-col gap-1 justfy-start items-start">
-              <p className="eyebrow light text-[#F9583C]! capitalize! text-lg!">Historial</p>
+              <p className="eyebrow light">Historial</p>
               <h2 id="works-list-title" className="text-2xl md:text-3xl font-semibold text-white">Todos los proyectos</h2>
             </div>
             {/* <span className="works-list-meta-top text-xs text-neutral-400 uppercase tracking-widest hidden md:block">ORDENADOS POR RECIENTE</span> */}
