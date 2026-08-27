@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type React from "react";
 import { Instrument_Sans } from "next/font/google";
 import { siteUrl } from "@/lib/site-config";
+// @ts-ignore Next.js processes global CSS imports at build time.
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -21,9 +22,6 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: ["/images/og.jpg"],
-  },
-  icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>π</text></svg>",
   },
 };
 
