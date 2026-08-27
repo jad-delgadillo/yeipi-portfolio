@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { services } from "@/lib/site-content";
@@ -74,19 +75,19 @@ export function ServicesSection() {
       <div className="services-mobile-list">
         {services.map((service) => (
           <article className="service-mobile-card" key={service.title}>
-            <div
-              // alt="thumbnail"
-              className="service-mobile-image"
-              // fill
-              // sizes="calc(100vw - 28px)"
-              // src={service.image}
-            />
-            <div className="service-mobile-scrim" />
+            <div className="service-mobile-card-top">
+              <span className="service-mobile-number">{service.number}</span>
+              <a
+                aria-label={`Cotizar ${service.title}`}
+                className="service-mobile-action"
+                href="#contact"
+              >
+                <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
+              </a>
+            </div>
             <div className="service-mobile-copy">
-              <span>{service.number}</span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <small>Ideal para: {service.ideal}</small>
             </div>
           </article>
         ))}
