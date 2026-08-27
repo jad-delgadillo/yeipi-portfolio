@@ -1307,8 +1307,10 @@ button {
 }
 
 .client-marquee-track {
-  animation: clientMarquee 34s linear infinite;
+  animation: clientMarquee var(--client-marquee-duration, 34s) linear infinite;
+  backface-visibility: hidden;
   display: flex;
+  transform: translate3d(0, 0, 0);
   width: max-content;
   will-change: transform;
 }
@@ -1348,7 +1350,7 @@ button {
 
 @keyframes clientMarquee {
   to {
-    transform: translateX(-50%);
+    transform: translate3d(var(--client-marquee-distance, -50%), 0, 0);
   }
 }
 
