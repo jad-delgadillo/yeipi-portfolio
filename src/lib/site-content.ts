@@ -205,7 +205,7 @@ export const services = [
     number: "01",
     title: "Contenido para tu negocio",
     description:
-      "Reels cinematográficos para mostrar tu espacio, producto y la experiencia de estar ahí.",
+      "Historias reales, hechas cine, para mostrar tu espacio, producto y la experiencia de estar ahí.",
     ideal: "Cafés, restaurantes, estudios, tiendas y marcas de lifestyle.",
     image:
       "https://pub-d24c6b501d254fb2949ddc37e644d121.r2.dev/videos/historias%20de%20marca/poster.jpg",

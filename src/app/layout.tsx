@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "el yeipi",
   description:
-    "Contenido cinematográfico para marcas, espacios y experiencias que quieren sentirse vivas.",
+    "Contenido cinematográfico para mostrar la esencia de tu marca, tu espacio y la experiencia de estar ahí.",
   openGraph: {
     images: ["/images/og.jpeg"],
   },

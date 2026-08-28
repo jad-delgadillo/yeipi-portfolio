@@ -36,7 +36,7 @@ export function Hero() {
           <div className="hero-card-mobile block md:hidden flex flex-col bg-transparent backdrop-blur-lg backdrop-filter backdrop-brightness-50 border-white/10 border-[1px] rounded-3xl p-4">
             <div className="flex flex-col gap-2 mb-2">
               <h1 id="hero-title-mobile" className="font-light text-3xl">
-                Reels que hacen sentir tu negocio.
+                Historias reales, hechas cine.
               </h1>
               <p className="text-xs">
                 Contenido cinematográfico para marcas, espacios y experiencias.
@@ -56,7 +56,7 @@ export function Hero() {
             <div className="desktop-hero-copy">
               
               {/* <p className="hero-kicker">el yeipi</p> */}
-              <h1 id="hero-title" className="hero-title-font">Reels que hacen sentir tu negocio.</h1>
+              <h1 id="hero-title" className="hero-title-font">Historias reales, hechas cine.</h1>
               <p className="desktop-hero-description hero-description-font">
                 Contenido cinematográfico para marcas, espacios y experiencias.
               </p>
