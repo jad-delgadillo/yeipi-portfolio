@@ -1,3 +1,3 @@
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://yeipi.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://el.yeipi.co"
 ).replace(/\/$/, "");

@@ -16,11 +16,21 @@ export const metadata: Metadata = {
   description:
     "Contenido cinematográfico para mostrar la esencia de tu marca, tu espacio y la experiencia de estar ahí.",
   openGraph: {
-    images: ["/images/og.jpg"],
+    type: "website",
+    url: "/",
+    siteName: "el yeipi",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 987,
+        height: 555,
+        alt: "el yeipi",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/og.jpg"],
+    images: ["/og.jpg"],
   },
 };
 
