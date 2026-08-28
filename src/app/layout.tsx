@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Contenido cinematográfico para marcas, espacios y experiencias que quieren sentirse vivas.",
   openGraph: {
-    images: ["/images/og.jpg"],
+    images: ["/images/og.jpeg"],
   },
   twitter: {
     card: "summary_large_image",
