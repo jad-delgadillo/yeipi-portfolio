@@ -85,11 +85,13 @@ export default function Home() {
             </Reveal>
 
             <Reveal className="about-body" delay={0.18}>
-              <p>
+              <div className="border-white border-[0.5px] p-5 md:p-10 rounded-xl border-white/20">
+              <p className="text-white! text-2xl!">
                 Me interesa encontrar esos momentos que hacen que un lugar,
                 una comunidad o una experiencia se sienta especial. La cámara
                 se acerca a la acción sin quitarle verdad.
               </p>
+              </div>
               <div className="about-signals" aria-label="Rasgos de la mirada de Yeipi">
                 <span>Movimiento</span>
                 <span>Personas</span>

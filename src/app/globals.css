@@ -2282,17 +2282,17 @@ button {
   position: relative;
 }
 
-.about-section::before {
-  border: 1px solid rgba(255, 253, 248, 0.09);
+/* .about-section::before {
+  border: 1px solid rgba(247, 247, 245, 0.233);
   border-radius: 999px;
   content: "";
   height: min(46vw, 620px);
   pointer-events: none;
   position: absolute;
-  right: min(-18vw, -120px);
-  top: 12%;
+  right: 10px;
+  top: 10%;
   width: min(46vw, 620px);
-}
+} */
 
 .about-shell {
   align-items: center;
