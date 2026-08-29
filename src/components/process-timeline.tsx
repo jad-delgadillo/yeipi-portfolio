@@ -55,19 +55,21 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
     <div className="handoff-timeline">
       {/* Background Videos with Crossfade Logic */}
       <div className="process-section-video-bg">
-        {videoUrls.map((url, idx) => (
-          <video
-            key={idx}
-            src={url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className={`process-section-video ${activeStep === idx ? "active" : ""}`}
-          />
-        ))}
-        <div className="process-section-video-overlay" />
+        <div className="process-section-video-stage">
+          {videoUrls.map((url, idx) => (
+            <video
+              key={idx}
+              src={url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className={`process-section-video ${activeStep === idx ? "active" : ""}`}
+            />
+          ))}
+          <div className="process-section-video-overlay" />
+        </div>
       </div>
 
       <div className="handoff-rail" aria-hidden="true" />
