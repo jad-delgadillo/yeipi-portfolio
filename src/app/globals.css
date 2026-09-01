@@ -1655,6 +1655,12 @@ button {
   color: var(--accent);
 }
 
+.services-title-line,
+.services-title-accent {
+  color: inherit;
+  font-weight: inherit;
+}
+
 .services-intro-copy {
   color: rgba(255, 253, 248, 0.58);
   font-size: clamp(1.05rem, 1.8vw, 1.42rem);
@@ -1746,71 +1752,92 @@ button {
 }
 
 .services-mobile-list {
-  display: grid;
-  gap: 12px;
-  margin: 40px auto 0;
+  background: #141416;
+  border: 1px solid #3a393c;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  margin: 28px auto 0;
+  overflow: clip;
+  width: 100%;
 }
 
 .service-mobile-card {
-  background:
-    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.052), transparent 44%),
-    radial-gradient(circle at 0% 100%, rgba(254, 90, 61, 0.04), transparent 40%),
-    #131315;
-  border: 1px solid rgba(255, 253, 248, 0.12);
-  border-radius: 28px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  align-items: flex-start;
+  background: #141416;
   display: flex;
-  flex-direction: column;
-  min-height: 200px;
-  padding: clamp(22px, 6vw, 26px);
+  gap: 12px;
+  min-height: 152px;
+  padding: 18px 14px;
+  width: 100%;
 }
 
-.service-mobile-card-top {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.service-mobile-number,
-.service-mobile-action {
-  align-items: center;
-  border-radius: 50%;
-  display: inline-flex;
-  height: 44px;
-  justify-content: center;
-  width: 44px;
+.service-mobile-card + .service-mobile-card {
+  border-top: 1px solid #303034;
 }
 
 .service-mobile-number {
-  border: 1px solid rgba(255, 253, 248, 0.16);
-  color: #fe5a3d;
+  color: var(--accent);
+  display: flex;
+  flex-shrink: 0;
   font-family: var(--font-label);
-  font-size: 0.82rem;
+  font-size: 12px;
   font-weight: var(--weight-regular);
   letter-spacing: 0.12em;
+  line-height: 16px;
+  padding-top: 4px;
+  width: 30px;
 }
 
 .service-mobile-action {
-  background: rgba(254, 90, 61, 0.08);
-  border: 1px solid rgba(254, 90, 61, 0.48);
-  color: #fe5a3d;
+  align-items: center;
+  color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 6px;
+  transition:
+    transform 180ms ease;
+  width: 54px;
+}
+
+.service-mobile-action-icon {
+  align-items: center;
+  background: rgba(255, 90, 61, 0.08);
+  border: 1px solid rgba(255, 90, 61, 0.65);
+  border-radius: 999px;
+  display: flex;
+  height: 44px;
+  justify-content: center;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
+    color 180ms ease;
+  width: 44px;
 }
 
 .service-mobile-action svg {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
 }
 
-.service-mobile-action:hover,
-.service-mobile-action:focus-visible {
-  background: #fe5a3d;
-  border-color: #fe5a3d;
+.service-mobile-action-label {
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.12em;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+.service-mobile-action:hover .service-mobile-action-icon,
+.service-mobile-action:focus-visible .service-mobile-action-icon {
+  background: var(--accent);
+  border-color: var(--accent);
   color: #141416;
+}
+
+.service-mobile-action:hover {
   transform: translateY(-2px);
 }
 
@@ -1819,30 +1846,72 @@ button {
 }
 
 .service-mobile-action:focus-visible {
+  outline: none;
+}
+
+.service-mobile-action:focus-visible .service-mobile-action-icon {
   outline: 2px solid var(--accent);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 .service-mobile-copy {
   color: var(--white);
-  display: grid;
-  gap: 10px;
-  margin-top: clamp(26px, 7vw, 32px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
 }
 
 .service-mobile-copy h3 {
-  font-size: clamp(1.35rem, 5.6vw, 1.5rem);
+  font-size: 21px;
   font-weight: var(--weight-semibold);
   letter-spacing: -0.035em;
-  line-height: 1.08;
+  line-height: 23px;
   margin: 0;
 }
 
 .service-mobile-copy p {
-  color: rgba(255, 253, 248, 0.6);
-  font-size: clamp(0.9rem, 3.8vw, 1rem);
-  line-height: 1.42;
+  color: #b8b6b2;
+  font-size: 15px;
+  letter-spacing: -0.005em;
+  line-height: 21px;
   margin: 0;
+}
+
+@media (max-width: 767px) {
+  .services-section {
+    background: #101012;
+    padding: 44px 18px 24px;
+  }
+
+  .services-intro .eyebrow {
+    margin: 0 0 14px;
+  }
+
+  .services-section .services-intro h2 {
+    font-size: 46px;
+    letter-spacing: -0.045em;
+    line-height: 44px;
+  }
+
+  .services-title-line,
+  .services-title-accent {
+    display: block;
+  }
+
+  .services-title-accent {
+    color: var(--accent);
+    font-weight: var(--weight-semibold);
+  }
+
+  .services-intro-copy {
+    color: #b8b6b2;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 23px;
+    margin-top: 14px;
+  }
 }
 
 .services-showcase {

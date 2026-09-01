@@ -17,7 +17,11 @@ export function ServicesSection() {
     >
       <Reveal className="services-intro">
         <p className="eyebrow">Qué puedes contratar</p>
-        <h2 id="services-title">Una forma de contar lo que ya está pasando.</h2>
+        <h2 id="services-title">
+          <span className="services-title-line">Una forma de</span>{" "}
+          <span className="services-title-accent">contar lo que ya</span>{" "}
+          <span className="services-title-line">está pasando.</span>
+        </h2>
         <p className="services-intro-copy">
           No necesitas llegar con una lista de tomas. Podemos partir de tu
           negocio, una fecha o una necesidad concreta y convertirla en una
@@ -75,20 +79,21 @@ export function ServicesSection() {
       <div className="services-mobile-list">
         {services.map((service) => (
           <article className="service-mobile-card" key={service.title}>
-            <div className="service-mobile-card-top">
-              <span className="service-mobile-number">{service.number}</span>
-              <a
-                aria-label={`Cotizar ${service.title}`}
-                className="service-mobile-action"
-                href="#contact"
-              >
-                <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
-              </a>
-            </div>
+            <span className="service-mobile-number">{service.number}</span>
             <div className="service-mobile-copy">
               <h3>{service.title}</h3>
               <p>{service.description}</p>
             </div>
+            <a
+              aria-label={`Cotizar ${service.title}`}
+              className="service-mobile-action"
+              href="#contact"
+            >
+              <span className="service-mobile-action-icon">
+                <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
+              </span>
+              <span className="service-mobile-action-label">Cotizar</span>
+            </a>
           </article>
         ))}
       </div>
