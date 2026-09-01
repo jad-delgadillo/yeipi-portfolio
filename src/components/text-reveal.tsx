@@ -8,9 +8,18 @@ type TextRevealProps = {
   className?: string;
   delay?: number;
   id?: string;
+  accentFromWord?: number;
+  mobileBreakAfter?: number[];
 };
 
-export function TextReveal({ text, className, delay = 0, id }: TextRevealProps) {
+export function TextReveal({
+  text,
+  className,
+  delay = 0,
+  id,
+  accentFromWord,
+  mobileBreakAfter = [],
+}: TextRevealProps) {
   const words = text.split(" ");
 
   const containerVariants = {
@@ -53,13 +62,20 @@ export function TextReveal({ text, className, delay = 0, id }: TextRevealProps) 
             className="inline-block overflow-hidden pt-0.5 pb-4 -mb-4"
           >
             <motion.span
-              className="inline-block"
+              className={`inline-block ${accentFromWord !== undefined && i >= accentFromWord ? "text-reveal-accent" : ""}`}
               variants={wordVariants}
             >
               {word}
             </motion.span>
           </span>
-          {i < words.length - 1 ? " " : null}
+          {i < words.length - 1 ? (
+            <>
+              {" "}
+              {mobileBreakAfter.includes(i) ? (
+                <br className="text-reveal-mobile-break" />
+              ) : null}
+            </>
+          ) : null}
         </Fragment>
       ))}
     </motion.h2>

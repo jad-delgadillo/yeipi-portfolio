@@ -15,7 +15,7 @@
     "react": "^19.0.0",
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "^19.0.0",
-    "vercel": "^54.18.1"
+    "vercel": "^59.11.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",

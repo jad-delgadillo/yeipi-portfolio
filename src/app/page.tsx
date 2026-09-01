@@ -12,6 +12,8 @@ import { StickySectionNav } from "@/components/sticky-section-nav";
 import { WorksList } from "@/components/works-list";
 import { process, projects } from "@/lib/site-content";
 
+const aboutSignals = ["Movimiento", "Personas", "Espacios", "Momentos reales"];
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -79,24 +81,33 @@ export default function Home() {
             <Reveal className="about-heading">
               <p className="eyebrow">Por qué Yeipi</p>
               <TextReveal
+                accentFromWord={4}
                 id="about-title"
+                mobileBreakAfter={[1, 3]}
                 text="No busco solamente grabar lo que haces."
               />
             </Reveal>
 
             <Reveal className="about-body" delay={0.18}>
-              <div className="border-white border-[0.5px] p-5 md:p-10 rounded-xl border-white/20">
-              <p className="text-white! text-2xl!">
-                Me interesa encontrar esos momentos que hacen que un lugar,
-                una comunidad o una experiencia se sienta especial. La cámara
-                se acerca a la acción sin quitarle verdad.
-              </p>
+              <div className="about-statement">
+                <p>
+                  Me interesa encontrar esos momentos que hacen que un lugar,
+                  una comunidad o una experiencia se sienta especial. La cámara
+                  se acerca a la acción sin quitarle verdad.
+                </p>
               </div>
-              <div className="about-signals" aria-label="Rasgos de la mirada de Yeipi">
-                <span>Movimiento</span>
-                <span>Personas</span>
-                <span>Espacios</span>
-                <span>Momentos reales</span>
+              <div className="about-traits">
+                <p className="about-signals-label">Rasgos de la mirada</p>
+                <ol className="about-signals" aria-label="Rasgos de la mirada de Yeipi">
+                  {aboutSignals.map((signal, index) => (
+                    <li key={signal}>
+                      <span className="about-signal-index">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="about-signal-label">{signal}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </Reveal>
           </div>
